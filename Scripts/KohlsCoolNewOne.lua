@@ -3,9 +3,6 @@ warn("Starting KohlsCool v"..version)
 
 local RunService = game:GetService("RunService")
 
-Spawn = RunService.Heartbeat:Connect
-spawn = Spawn
-
 local prefix = ";" -- ONLY ONE CHARACTER
 local function gui()
     local ScreenGui = Instance.new("ScreenGui")
