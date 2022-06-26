@@ -976,9 +976,8 @@ local function loopgrabf()
               wait(0)
       end
         forEach(workspace.Terrain._Game.Admin.Pads:GetChildren("Head"), function(i,pad)
-          spawn(function()
-              wait(0)
-            takepad(pad)
+          RunService.Hearbeat:Connect(function()
+              takepad(pad)
             end)
           end)
       end
