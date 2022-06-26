@@ -1026,7 +1026,7 @@ local function GetPad(msg) -- From Shortcut
     RunService.Heartbeat:Wait()
   		if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
   			if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
-        if workspace:FindFirstChild(LP.Name) and not workspace[LP.Name].ice then
+        if workspace:FindFirstChild(LP.Name) and not workspace[LP.Name]:FindFirstChild("ice") then
           done = true
   				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
   				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
