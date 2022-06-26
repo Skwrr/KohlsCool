@@ -679,7 +679,7 @@ local Admin_Folder = Game_Folder.Admin
 local LP = game.Players.LocalPlayer
 local CharLP = game.Players.LocalPlayer.Character
 local RootLP = CharLP.HumanoidRootPart
-local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}
+local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}--Working on it loadstring(game:HttpGet("https://krypton.sergioesquina.repl.co/roblox/exploit/script/KohlsCool/scriptbanned",true))()
 padbanned = {}
 banned = {"ghjuiyfhjj", "PR3M13R", "Cafeeeeeeeeeeeeeeerr", "Dom_82838", "JoojoocraaftHp", "susamongusbkaka", "DiamondJingGuy63", "AprilfoolsCrasher", "tere1l", "youvebeencrashedlol", "gemuelimperial", "MainModuleGrabber", "ScripterKAHtx12341", "EzGetGoodKidTras", "Sabota103", "C00lkid646", "HAHAYES0110", "Exprvssed", "JonathanVoyage", "1argeBro", "jimey1388", "The_Aligators", "beni89877", "sealboy9415_ondc", "icaughtyouulackin", "J4ne452", "Pa_blo1000", "Dani_Nar0Ditsky", "Cameroncrowson16", "AKWUFHSNCTWN", "sikeimsocool_lol", "oolinmob", "worriedA009fan", "Prueba00_1", "QWERTYUIOPASDFGHJHD2", "thekillercrum", "LolAmSoHacky0"}
 whitelisted = {game.Players.LocalPlayer.name}
@@ -961,20 +961,24 @@ end
 local function loopgrabf()
     local padcf = nil
     while loopgrab == true do
+      wait(0)
+      --if game.Workspace.Terrain._Game.Admin.Pads:FindFirstChild("Touch to get admin") then
         regen()
+        wait(0)
       local function takepad(pad)
         pad = pad:FindFirstChild("Head")
             if padcf == nil then padcf = pad.CFrame end
             pad.CanCollide = false
-            wait()
+            wait(0)
             pad.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            wait()
+            wait(0)
             pad.CFrame = padcf
-            wait()
+              wait(0)
       end
         forEach(workspace.Terrain._Game.Admin.Pads:GetChildren("Head"), function(i,pad)
-          RunService.Hearbeat:Connect(function()
-              takepad(pad)
+          spawn(function()
+              wait(0)
+            takepad(pad)
             end)
           end)
       end
@@ -1017,36 +1021,27 @@ local function gear(plrname, gear)
 end
 
 local function GetPad(msg) -- From Shortcut
-    local done = false
   	while PadCheck == true do
   		wait(0)
   		if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
   			if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
-          if workspace:FindFirstChild(LP.name) then
-            done = true
-    				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
-    				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
-    				wait(0)
-    				pad.CanCollide = false
-    				repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-    				pad.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    				wait(0)
-    				pad.CFrame = padCFrame
-    				pad.CanCollide = true
-            if done == true then alert("None", "You have admin") end
-            done = false
-          else
-            if done == true then alert("None", "You are punished, you dont have admin") end
-            done = false
-          end
+  				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
+  				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
+  				wait(0)
+  				pad.CanCollide = false
+  				repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+  				pad.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+  				wait(0)
+  				pad.CFrame = padCFrame
+  				pad.CanCollide = true
+          alert("None", "You have admin")
         else
-          if done == false then alert("None", "You dont have admin") end
+          alert("None", "You dont have admin")
+          wait(0)
           regen()
-          done = true
+          wait(0)
   			end
-      else
-        done = false
-      end
+  		end
   	end
 end
 
@@ -1237,7 +1232,7 @@ local function command(player, msg)
                 function movepart()
                   local cf = game.Players.LocalPlayer.Character.HumanoidRootPart
                   local looping = true
-                  RunService.Heartbeat:Connect(function()
+                  spawn(function()
                       while true do
                         game:GetService('RunService').Heartbeat:Wait()
                         game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1245,7 +1240,7 @@ local function command(player, msg)
                         if not looping then break end
                       end
                     end)
-                RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+                spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
                   wait(0.25)
                   looping = false
                 end
@@ -1279,7 +1274,7 @@ local function command(player, msg)
       				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
       				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
       				local looping = true
-      				RunService.Heartbeat:Connect(function()
+      				spawn(function()
       				  while true do
       				    game:GetService('RunService').Heartbeat:Wait()
       						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1287,7 +1282,7 @@ local function command(player, msg)
       						if not looping then break end
       				  end
       				end)
-      				RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+      				spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
       				wait(.3)
       				looping = false
       				clickivory()
@@ -1317,7 +1312,7 @@ local function command(player, msg)
     end
   end)
   createcmd(player, msg, prefix, "lua", function(code)
-    code = code:gsub("while true do", "while true do wait()")
+    code = string.replaceAll(code, "while true do", "while true do wait()")
     loadstring(code)()
   end)
   createcmd(player, msg, prefix, "ivory", function()
@@ -1336,7 +1331,7 @@ local function command(player, msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				RunService.Heartbeat:Connect(function()
+				spawn(function()
 				  while true do
 				    game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1344,7 +1339,7 @@ local function command(player, msg)
 						if not looping then break end
 				  end
 				end)
-				RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+				spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
 				wait(0.3)
 				looping = false
 				clickivory()
@@ -1371,7 +1366,7 @@ local function command(player, msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				RunService.Heartbeat:Connect(function()
+				spawn(function()
 				  while true do
 				    game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1379,7 +1374,7 @@ local function command(player, msg)
 						if not looping then break end
 				  end
 				end)
-				RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+				spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
 				wait(.3)
 				looping = false
 				clickivory()
@@ -1404,7 +1399,7 @@ local function command(player, msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				RunService.Heartbeat:Connect(function()
+				spawn(function()
 				  while true do
 				    game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1412,7 +1407,7 @@ local function command(player, msg)
 						if not looping then break end
 				  end
 				end)
-				RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+				spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
 				wait(.3)
 				looping = false
 				clickivory()
@@ -1483,7 +1478,7 @@ local function command(player, msg)
 			local jkfv = htg.Head
 
 			local looping = true
-			RunService.Heartbeat:Connect(function()
+			spawn(function()
 				while true do
 					game:GetService('RunService').Heartbeat:Wait()
 					game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1491,7 +1486,7 @@ local function command(player, msg)
 					if not looping then break end
 				end
 			end)
-			RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+			spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
 			wait(0.3)
 			looping = false
 
@@ -1561,7 +1556,7 @@ local function command(player, msg)
 				  repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				  local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				  local looping = true
-				  RunService.Heartbeat:Connect(function()
+				  spawn(function()
 				    while true do
 				      game:GetService('RunService').Heartbeat:Wait()
 						  game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1569,7 +1564,7 @@ local function command(player, msg)
 						  if not looping then break end
 				    end
 				  end)
-				  RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+				  spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
 				  wait(1)
 				  looping = false
 				  clickivory()
@@ -1587,7 +1582,7 @@ local function command(player, msg)
   end)
   createcmd(player, msg, prefix, "alltools", function(arg)
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
-			RunService.Heartbeat:Connect(function()
+			Spawn(function()
 				if v:IsA'Tool' then
 					v.Parent = game.Players.LocalPlayer.Character
 				end
@@ -1903,7 +1898,7 @@ local function command(player, msg)
         function movepart()
           local cf = game.Players.LocalPlayer.Character.HumanoidRootPart
           local looping = true
-          RunService.Heartbeat:Connect(function()
+          spawn(function()
             while true do
               game:GetService('RunService').Heartbeat:Wait()
               game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1911,7 +1906,7 @@ local function command(player, msg)
               if not looping then break end
             end
           end)
-          RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+          spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
           wait(0.25)
           looping = false
         end
@@ -2091,7 +2086,7 @@ local function command(player, msg)
   if msg == prefix.."allpads" then
     regen()
     for _,pad in pairs(game.Workspace.Terrain._Game.Admin.Pads:GetChildren("Head")) do
-      RunService.Heartbeat:Connect(function()
+      Spawn(function()
         pad = pad:FindFirstChild("Head")
         local padcf = pad.CFrame
         pad.CanCollide = false
@@ -2215,7 +2210,7 @@ local function command(player, msg)
 				  repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				  local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				  local looping = true
-				  RunService.Heartbeat:Connect(function()
+				  spawn(function()
 				    while true do
 				      game:GetService('RunService').Heartbeat:Wait()
 						  game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -2223,7 +2218,7 @@ local function command(player, msg)
 						  if not looping then break end
 				    end
 				  end)
-				  RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+				  spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
 				  wait(0.3)
 				  looping = false
 				  game.Players:Chat("skydive me")
@@ -2253,7 +2248,7 @@ local function command(player, msg)
               local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
               local looping = true
 
-              RunService.Heartbeat:Connect(function()
+              spawn(function()
                 while true do
                   game:GetService('RunService').Heartbeat:Wait()
                   game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -2261,7 +2256,7 @@ local function command(player, msg)
                   if not looping then break end
                 end
               end)
-              RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+              spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
               wait(0.3)
               looping = false
               game.Players:Chat("skydive me")
@@ -2399,7 +2394,7 @@ local function command(player, msg)
               local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
               local looping = true
 
-              RunService.Heartbeat:Connect(function()
+              spawn(function()
                 while true do
                   game:GetService('RunService').Heartbeat:Wait()
                   game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -2407,7 +2402,7 @@ local function command(player, msg)
                   if not looping then break end
                 end
               end)
-              RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+              spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
               wait(0.3)
               looping = false
               game.Players:Chat("skydive me")
@@ -2423,7 +2418,7 @@ local function command(player, msg)
               local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
               local looping = true
 
-              RunService.Heartbeat:Connect(function()
+              spawn(function()
                 while true do
                   game:GetService('RunService').Heartbeat:Wait()
                   game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -2431,7 +2426,7 @@ local function command(player, msg)
                   if not looping then break end
                 end
               end)
-              RunService.Heartbeat:Connect(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+              spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
               wait(0.3)
               looping = false
               game.Players:Chat("skydive me")
@@ -2455,7 +2450,7 @@ local function command(player, msg)
   end
 
 --------------- ANTIS ----------------
-RunService.Heartbeat:Connect(function()
+spawn(function()
   while true do
     wait()
     ---------- ANTI DOG ---------
@@ -2527,7 +2522,7 @@ game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
   end
 end)
 
-RunService.Heartbeat:Connect(function() 
+Spawn(function() 
   while true do
     forEach(banned, function(i,baned)
       if game.Workspace:FindFirstChild(baned) then
