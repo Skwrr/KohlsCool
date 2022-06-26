@@ -1022,18 +1022,23 @@ local function GetPad(msg) -- From Shortcut
   		wait(0)
   		if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
   			if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
-          if workspace:FindFirstChild(LP.name) then done = true else done = false end
-  				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
-  				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
-  				wait(0)
-  				pad.CanCollide = false
-  				repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-  				pad.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-  				wait(0)
-  				pad.CFrame = padCFrame
-  				pad.CanCollide = true
-          if done == true then alert("None", "You have admin") end
-          done = false
+          if workspace:FindFirstChild(LP.name) then
+            done = true
+    				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
+    				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
+    				wait(0)
+    				pad.CanCollide = false
+    				repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    				pad.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    				wait(0)
+    				pad.CFrame = padCFrame
+    				pad.CanCollide = true
+            if done == true then alert("None", "You have admin") end
+            done = false
+          else
+            if done == true then alert("None", "You are punished, you dont have admin") end
+            done = false
+          end
         else
           if done == false then alert("None", "You dont have admin") end
           regen()
