@@ -1,4 +1,4 @@
-local version = "4.4-t"
+local version = "4.5"
 warn("Starting KohlsCool v"..version)
 
 local RunService = game:GetService("RunService")
