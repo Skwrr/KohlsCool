@@ -679,7 +679,7 @@ local Admin_Folder = Game_Folder.Admin
 local LP = game.Players.LocalPlayer
 local CharLP = game.Players.LocalPlayer.Character
 local RootLP = CharLP.HumanoidRootPart
-local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}--Working on it loadstring(game:HttpGet("https://krypton.sergioesquina.repl.co/roblox/exploit/script/KohlsCool/scriptbanned",true))()
+local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}
 padbanned = {}
 banned = {"ghjuiyfhjj", "PR3M13R", "Cafeeeeeeeeeeeeeeerr", "Dom_82838", "JoojoocraaftHp", "susamongusbkaka", "DiamondJingGuy63", "AprilfoolsCrasher", "tere1l", "youvebeencrashedlol", "gemuelimperial", "MainModuleGrabber", "ScripterKAHtx12341", "EzGetGoodKidTras", "Sabota103", "C00lkid646", "HAHAYES0110", "Exprvssed", "JonathanVoyage", "1argeBro", "jimey1388", "The_Aligators", "beni89877", "sealboy9415_ondc", "icaughtyouulackin", "J4ne452", "Pa_blo1000", "Dani_Nar0Ditsky", "Cameroncrowson16", "AKWUFHSNCTWN", "sikeimsocool_lol", "oolinmob", "worriedA009fan", "Prueba00_1", "QWERTYUIOPASDFGHJHD2", "thekillercrum", "LolAmSoHacky0"}
 whitelisted = {game.Players.LocalPlayer.name}
@@ -1026,7 +1026,7 @@ local function GetPad(msg) -- From Shortcut
     RunService.Heartbeat:Wait()
   		if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
   			if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
-        if workspace:FindFirstChild(LP.Name) then
+        if workspace:FindFirstChild(LP.Name) and not workspace[LP.Name].ice then
           done = true
   				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
   				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
