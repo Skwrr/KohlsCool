@@ -1021,25 +1021,31 @@ local function gear(plrname, gear)
 end
 
 local function GetPad(msg) -- From Shortcut
+  local done = false
   	while PadCheck == true do
-  		wait(0)
+    RunService.Heartbeat:Wait()
   		if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
   			if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
+        if workspace:FindFirstChild(LP.Name) then
+          done = true
   				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
   				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
-  				wait(0)
   				pad.CanCollide = false
   				repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
   				pad.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-  				wait(0)
+  				RunService.Heartbeat:Wait()
   				pad.CFrame = padCFrame
   				pad.CanCollide = true
-          alert("None", "You have admin")
+          if done == true then alert("None", "You have admin") end
+          done = false
         else
-          alert("None", "You dont have admin")
-          wait(0)
+          if done == true then alert("None", "You dont have Humanoid (or you are punished) so you dont have admin") end
+          done = false
+        end
+        else
+          if done == false then alert("None", "You dont have admin") end
           regen()
-          wait(0)
+          done = true
   			end
   		end
   	end
