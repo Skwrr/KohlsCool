@@ -1868,12 +1868,13 @@ local function command(player, msg)
     end
   end, true)
   if msg == prefix.."cmds" then
+    wait(.3)
     alert(player, prefix.."moveobby | "..prefix.."kit (kitname) | "..prefix.."portalgun | "..prefix.."pb | "..prefix.."bb | "..prefix.."gohouse | "..prefix.."spam (command) | "..prefix.."stop | "..prefix.."shutdown | "..prefix.."nok | "..prefix.."perm | "..prefix.."noperm | "..prefix.."wlc | "..prefix.."dwlc | "..prefix.."rej | "..prefix.."sm (message)")
-    wait(.1)
+    wait(.3)
     alert(player, ""..prefix.."unpadban (plr) | "..prefix.."findpads | "..prefix.."whitelist (plr) | "..prefix.."unwhitelist (plr) | "..prefix.."fixbp | "..prefix.."cmds | "..prefix.."jail (plr) | "..prefix.."unjail (plr) | "..prefix.."regen | "..prefix.."skydive | "..prefix.."padban (plr) | "..prefix.."btools (plr)")
-    wait(.1)
+    wait(.3)
     alert(player, ""..prefix.."bugchar (plr) | "..prefix.."unskydive | "..prefix.."get | "..prefix.."hop | "..prefix.."ownerchar (plr) | "..prefix.."promo | "..prefix.."tp (plr) | "..prefix.."toggle (option) | "..prefix.."autoadmin (onjoin/toggle) | "..prefix.."admin (plr) | "..prefix.."unadmin (plr) | "..prefix.."ban (plr) | "..prefix.."unban (plr) | "..prefix.."play (num) | "..prefix.."setmusic (id) | "..prefix.."alltools | "..prefix.."gearban (plr) | "..prefix.."ungearban (plr) | "..prefix.."removeregen | "..prefix.."fregen")
-    wait(.1)
+    wait(.3)
     alert(player, prefix.."upme | "..prefix.."sniper | "..prefix.."setspawn | "..prefix.."lua (lua code) | "..prefix.."animation (animation name) | "..prefix.."bringregen | "..prefix.."ivory | "..prefix.."clearlogs | "..prefix.."movebp | "..prefix.."copyname (name or display name) | "..prefix.."report (playername)/(reason) | "..prefix.."fixcam | "..prefix.."movepads | "..prefix.."animated | "..prefix.."fps | "..prefix.."flygui | "..prefix.."box | "..prefix.."scgui | "..prefix.."hidepad | "..prefix.."bringpads")
   end
   createcmd(player, msg, prefix, "promo", function()
