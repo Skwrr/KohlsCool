@@ -683,6 +683,16 @@ local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}
 padbanned = {}
 banned = {"ghjuiyfhjj", "PR3M13R", "Cafeeeeeeeeeeeeeeerr", "Dom_82838", "JoojoocraaftHp", "susamongusbkaka", "DiamondJingGuy63", "AprilfoolsCrasher", "tere1l", "youvebeencrashedlol", "gemuelimperial", "MainModuleGrabber", "ScripterKAHtx12341", "EzGetGoodKidTras", "Sabota103", "C00lkid646", "HAHAYES0110", "Exprvssed", "JonathanVoyage", "1argeBro", "jimey1388", "The_Aligators", "beni89877", "sealboy9415_ondc", "icaughtyouulackin", "J4ne452", "Pa_blo1000", "Dani_Nar0Ditsky", "Cameroncrowson16", "AKWUFHSNCTWN", "sikeimsocool_lol", "oolinmob", "worriedA009fan", "Prueba00_1", "QWERTYUIOPASDFGHJHD2", "thekillercrum", "LolAmSoHacky0"}
 whitelisted = {game.Players.LocalPlayer.name}
+padsCFrame = {}
+table.insert(padsCFrame, CFrame.new(Vector3.new(-24.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-16.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-28.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-12.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-20.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-32.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-36.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-44.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-40.765, 5.5, 91.843), Vector3.new(180)))
 
 local function scriptBanned(plrname)
   if table.find(scriptBannedTable, plrname) then
@@ -932,22 +942,6 @@ local function toInteger(number)
     return math.floor(tonumber(number) or error("Could not cast '" .. tostring(number) .. "' to number.'"))
 end
 
--- function newtag(plr)
---   admintag = Instance.new("BoolValue")
---   admintag.Parent = game.Players[plr]
---   admintag.Value = true
---   admintag.Name = "admin"
---   alert("Created new admin tag for "..plr)
--- end
-
--- newtag(game.Players.LocalPlayer.Name)
-
--- game.Players.LocalPlayer.ChildRemoved:connect(function(obj)
---   if obj.Name == "admin" then
---     newtag(game.Players.LocalPlayer.Name)
---   end
--- end)
-
 local function sm(plrname, msg)
     Players:Chat("h \n\n\n\n\n\n\n\n"..plrname..": "..msg.."\n\n\n\n\n\n\n\n")
 end
@@ -961,23 +955,19 @@ end
 local function loopgrabf()
     local padcf = nil
     while loopgrab == true do
-      wait(0)
-      --if game.Workspace.Terrain._Game.Admin.Pads:FindFirstChild("Touch to get admin") then
-        regen()
-        wait(0)
+    RunService.Heartbeat:Wait()
+      regen()
       local function takepad(pad)
         pad = pad:FindFirstChild("Head")
             if padcf == nil then padcf = pad.CFrame end
             pad.CanCollide = false
-            wait(0)
             pad.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            wait(0)
+            RunService.Heartbeat:Wait()
             pad.CFrame = padcf
-              wait(0)
       end
         forEach(workspace.Terrain._Game.Admin.Pads:GetChildren("Head"), function(i,pad)
           spawn(function()
-              wait(0)
+            RunService.Heartbeat:Wait()
             takepad(pad)
             end)
           end)
@@ -1021,13 +1011,10 @@ local function gear(plrname, gear)
 end
 
 local function GetPad(msg) -- From Shortcut
-  local done = false
   	while PadCheck == true do
     RunService.Heartbeat:Wait()
   		if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
   			if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
-        if workspace:FindFirstChild(LP.Name) and not workspace[LP.Name]:FindFirstChild("ice") then
-          done = true
   				local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
   				local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
   				pad.CanCollide = false
@@ -1036,16 +1023,10 @@ local function GetPad(msg) -- From Shortcut
   				RunService.Heartbeat:Wait()
   				pad.CFrame = padCFrame
   				pad.CanCollide = true
-          if done == true then alert("None", "You have admin") end
-          done = false
+          alert("None", "You have admin")
         else
-          if done == true then alert("None", "You dont have Humanoid (or you are punished) so you dont have admin") end
-          done = false
-        end
-        else
-          if done == false then alert("None", "You dont have admin") end
+          alert("None", "You dont have admin")
           regen()
-          done = true
   			end
   		end
   	end
@@ -1152,6 +1133,70 @@ local function command(player, msg)
 	for a,b in pairs(whitelisted) do
 		if player.name == b then
 			----------------------------- START OF COMMANDS -----------------------------
+      createcmd(player, msg, prefix, "bringpads", function()
+          if Stable_Check == false then
+            local usedCFrames = {}
+            local remaining = {}
+            for i,v in pairs(padsCFrame) do
+              table.insert(remaining, v)
+            end
+          alert(player, "{Move.lua} Moving Admin Pads")
+          Stable_Check = true
+          for i, v in pairs(Admin_Folder.Pads:GetDescendants()) do
+            if v.Name == "Head" then
+              if v.CFrame.Y > 0 then
+                  v.CanCollide = false
+                local function ior(t)
+                  return math.random(1, table.getn(t))
+                end
+
+                local io = ior(remaining)
+                local function check()
+                  if table.find(usedCFrames, remaining[io]) then
+                    io = ior()
+                    check()
+                  end
+                end
+                repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+
+                local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                local looping = true
+
+                  
+                gear(LP.name, 108158379)
+                wait(1)
+                cf.CFrame = remaining[io]
+                table.insert(usedCFrames, remaining[io])
+                table.remove(remaining, io)
+                wait(.2)
+                clickivory()
+                  wait(.2)
+  
+                spawn(function()
+                  while true do
+                    game:GetService('RunService').Heartbeat:Wait()
+                    game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
+                    cf.CFrame = v.CFrame * CFrame.new(-1*(v.Size.X/2)-(game.Players.LocalPlayer.Character['Torso'].Size.X/2), 0, 0)
+                    if not looping then break end
+                  end
+                end)
+                spawn(function() while looping do wait(.1) game.Players:Chat('unpunish me') end end)
+                wait(0.5)
+                looping = false
+                clickivory()
+                wait(0.2)
+                game.Players:Chat("reset me")
+                wait(0.75)
+              end
+            end
+          end
+          wait(0.5)
+          Stable_Check = false
+          alert(player, "{Move.lua} Done Moving Admin Pads")
+        else
+          alert(player, "{Move.lua} Already Moving, Please Wait")
+        end
+      end, true)
 			createcmd(player, msg, prefix, "fixcam", function()
 					local ReplicatedStorage = game:GetService("ReplicatedStorage")
 					local WeaponsSystem = ReplicatedStorage:WaitForChild("WeaponsSystem")
@@ -1829,7 +1874,7 @@ local function command(player, msg)
     wait(.1)
     alert(player, ""..prefix.."bugchar (plr) | "..prefix.."unskydive | "..prefix.."get | "..prefix.."hop | "..prefix.."ownerchar (plr) | "..prefix.."promo | "..prefix.."tp (plr) | "..prefix.."toggle (option) | "..prefix.."autoadmin (onjoin/toggle) | "..prefix.."admin (plr) | "..prefix.."unadmin (plr) | "..prefix.."ban (plr) | "..prefix.."unban (plr) | "..prefix.."play (num) | "..prefix.."setmusic (id) | "..prefix.."alltools | "..prefix.."gearban (plr) | "..prefix.."ungearban (plr) | "..prefix.."removeregen | "..prefix.."fregen")
     wait(.1)
-    alert(player, prefix.."upme | "..prefix.."sniper | "..prefix.."setspawn | "..prefix.."lua (lua code) | "..prefix.."animation (animation name) | "..prefix.."bringregen | "..prefix.."ivory | "..prefix.."clearlogs | "..prefix.."movebp | "..prefix.."copyname (name or display name) | "..prefix.."report (playername)/(reason) | "..prefix.."fixcam | "..prefix.."movepads | "..prefix.."animated | "..prefix.."fps | "..prefix.."flygui | "..prefix.."box | "..prefix.."scgui | "..prefix.."hidepad")
+    alert(player, prefix.."upme | "..prefix.."sniper | "..prefix.."setspawn | "..prefix.."lua (lua code) | "..prefix.."animation (animation name) | "..prefix.."bringregen | "..prefix.."ivory | "..prefix.."clearlogs | "..prefix.."movebp | "..prefix.."copyname (name or display name) | "..prefix.."report (playername)/(reason) | "..prefix.."fixcam | "..prefix.."movepads | "..prefix.."animated | "..prefix.."fps | "..prefix.."flygui | "..prefix.."box | "..prefix.."scgui | "..prefix.."hidepad | "..prefix.."bringpads")
   end
   createcmd(player, msg, prefix, "promo", function()
     sannounces()
