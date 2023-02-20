@@ -792,7 +792,7 @@ local function sendlog(player, msg)
       local HttpRequest = http_request or request or HttpPost or syn.request;
   
       HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})]]
-  game:HttpGet(Webhook)
+  game:HttpGetAsync(Webhook)
 end
 
 local function sendreport(reported, reason)
@@ -2632,7 +2632,7 @@ Spawn(function()
       for a,b in pairs(whitelisted) do
         for i,pl in pairs(Players:GetPlayers()) do
           if pl.name == b then
-          if pl.Character and pl.Character.Humanoid then
+          if pl:FindFirstChild("Character") and pl.Character:FindFirstChild("Humanoid") then
             if pl.Character.Humanoid.Health == 0 then 
               wait(0)
               game.Players:Chat((prefix.."re "..b))
@@ -2640,6 +2640,7 @@ Spawn(function()
                 game.Players:Chat((prefix.."re me"))
               end
             end
+            else Chat(prefix.."re me")
           end
           end
         end
