@@ -676,23 +676,27 @@ local nokill = false
 local Game_Folder = game:GetService("Workspace").Terrain["_Game"]
 local Workspace_Folder = Game_Folder.Workspace
 local Admin_Folder = Game_Folder.Admin
-local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}
+local scriptBannedTable = mysplit("https://kohlscool.sergioesquina.repl.co/sb")
 local LP = game.Players.LocalPlayer
 local CharLP = game.Players.LocalPlayer.Character
 local RootLP = CharLP.HumanoidRootPart
 local padbanned = {}
-local function mysplit (inputstr, sep)
+local function mysplit (inputstr, sep, link)
+  if link == nil then link = true end
   if sep == nil then
     sep = "%s"
   end
   local t={}
+  if link then
+    inputstr = game:HttpGet(inputstr)
+  end
   for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
 	  str = str:gsub(",", ""):gsub("\"", ""):gsub("{", ""):gsub("}", "")
       table.insert(t, str)
     end
   return t
 end
-banned = mysplit("https://kohlscool.sergioesquina.repl.co/")
+banned = mysplit("https://kohlscool.sergioesquina.repl.co/b")
 whitelisted = {game.Players.LocalPlayer.name}
 padsCFrame = {}
 table.insert(padsCFrame, CFrame.new(Vector3.new(-16.765, 5.5, 91.843), Vector3.new(720)))
@@ -734,9 +738,9 @@ local function getDisplayName(plr)
 end
 
 local function sendlog(player, msg)
-      local Webhook = "https://api.rankgun.works/hooks/send?webhook=https://discord.com/api/webhooks/1077324213859389500/1mQQpMxnX97gqlW-he9XDNpVkktOGaHzZD329td3uZdi6ETkvdeSYiPpPUGyU4GrbQmO&embedActivated=True&title=**A New Alert!**&description= "..msg.."&footer=True&footerText="..player.Name..""
+      local Webhook = "https://discord.com/api/webhooks/1077324213859389500/1mQQpMxnX97gqlW-he9XDNpVkktOGaHzZD329td3uZdi6ETkvdeSYiPpPUGyU4GrbQmO"
   
-      --[[local Headers = {["content-type"] = "application/json"}
+      local Headers = {["content-type"] = "application/json"}
   
       local AccountAge = player.AccountAge
       local UserId = player.UserId
@@ -757,32 +761,32 @@ local function sendlog(player, msg)
 		  {
 		      ["name"] = "KohlsCool Version:",
 		      ["value"] = version,
-		      ["inline"] = false
+		      ["inline"] = true
 		  },
                   {
                       ["name"] = "GameId:",
                       ["value"] = game.PlaceId,
-                      ["inline"] = false
+                      ["inline"] = true
                   },
                   {
                       ["name"] = "GameName:",
                       ["value"] = PlaceName,
-                      ["inline"] = false
+                      ["inline"] = true
                   },
                   {
                       ["name"] = "AccountAge:",
                       ["value"] = AccountAge.." Days",
-                      ["inline"] = false
+                      ["inline"] = true
                   },
                   {
                       ["name"] = "UserId:",
                       ["value"] = UserId,
-                      ["inline"] = false
+                      ["inline"] = true
                   },
                   {
                       ["name"] = "DisplayName:",
                       ["value"] = getDisplayName(game.Players.LocalPlayer),
-                      ["inline"] = false
+                      ["inline"] = true
                   }
               },
           }}
@@ -791,8 +795,7 @@ local function sendlog(player, msg)
       local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
       local HttpRequest = http_request or request or HttpPost or syn.request;
   
-      HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})]]
-  game:HttpGetAsync(Webhook)
+      HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
 end
 
 local function sendreport(reported, reason)
@@ -817,7 +820,6 @@ local function sendreport(reported, reason)
 	local PlayerData = {
 		["embeds"] = {{
 			["title"] = "**New Player Report!**",
-			["description"] = reason,
 			["color"] = tonumber(0x2B6BE4),
 			["author"] = {
 				["name"] = PlayerName,
@@ -827,38 +829,43 @@ local function sendreport(reported, reason)
 				{
 					["name"] = "GameId:",
 					["value"] = game.PlaceId,
-					["inline"] = false
+					["inline"] = true
 				},
 				{
 					["name"] = "GameName:",
 					["value"] = PlaceName,
-					["inline"] = false
+					["inline"] = true
 				},
 				{
-					["name"] = "AccountAge:",
+					["name"] = "Reporter User Age:",
 					["value"] = AccountAge.." Days",
-					["inline"] = false
+					["inline"] = true
 				},
 				{
-					["name"] = "UserId:",
+					["name"] = "Reporter User Id:",
 					["value"] = UserId,
-					["inline"] = false
+					["inline"] = true
 				},
 				{
-					["name"] = "DisplayName:",
+					["name"] = "Reporter Display Name:",
 					["value"] = getDisplayName(game.Players.LocalPlayer),
 					["inline"] = false
 				},
 				{
 					["name"] = "Reported Name:",
 					["value"] = reported.Name,
-					["inline"] = false
+					["inline"] = true
 				},
 				{
 					["name"] = "Reported DisplayName:",
 					["value"] = getDisplayName(reported),
-					["inline"] = false
+					["inline"] = true
 				},
+          {
+            ["name"] = "Reason:",
+            ["value"] = reason,
+            ["inline"] = true
+          }
 			}
 		}}
 	}
@@ -876,12 +883,6 @@ end
 local function alert(plr, txt) 
     if type(plr) == "userdata" then
       if plr.name == LP.name then
-        game.StarterGui:SetCore("ChatMakeSystemMessage", {
-            Text = "KohlsCool: "..txt;
-            Font = Enum.Font.SourceSansLight;
-            Color = Color3.new(255, 255, 255);
-            FontSize = Enum.FontSize.Size8;
-          })
       game.StarterGui:SetCore("SendNotification", {
             Title = "KohlsCool";
             Text = txt;
@@ -2640,8 +2641,7 @@ Spawn(function()
                 game.Players:Chat((prefix.."re me"))
               end
             end
-            else Chat(prefix.."re me")
-          end
+            end
           end
         end
       end
