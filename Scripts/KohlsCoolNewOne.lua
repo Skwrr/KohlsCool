@@ -1229,7 +1229,7 @@ local function command(player, msg)
 					local ReplicatedStorage = game:GetService("ReplicatedStorage")
 					local WeaponsSystem = ReplicatedStorage:WaitForChild("WeaponsSystem")
 					local weaponModule = require(WeaponsSystem:WaitForChild("WeaponsSystem"))
-					local camera = workspace.Camera
+					local camera = game:GetService("Workspace").Camera
 					weaponModule.camera:setEnabled(false)
 					weaponModule.camera.rotateCharacterWithCamera = false
 					camera.CameraSubject = script.Parent
