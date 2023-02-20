@@ -680,8 +680,8 @@ local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}
 local LP = game.Players.LocalPlayer
 local CharLP = game.Players.LocalPlayer.Character
 local RootLP = CharLP.HumanoidRootPart
-padbanned = {}
-function mysplit (inputstr, sep)
+local padbanned = {}
+local function mysplit (inputstr, sep)
   if sep == nil then
     sep = "%s"
   end
@@ -734,9 +734,9 @@ local function getDisplayName(plr)
 end
 
 local function sendlog(player, msg)
-      local Webhook = "https://discord.com/api/webhooks/1077324213859389500/1mQQpMxnX97gqlW-he9XDNpVkktOGaHzZD329td3uZdi6ETkvdeSYiPpPUGyU4GrbQmO"
+      local Webhook = "https://api.rankgun.works/hooks/send?webhook=https://discord.com/api/webhooks/1077324213859389500/1mQQpMxnX97gqlW-he9XDNpVkktOGaHzZD329td3uZdi6ETkvdeSYiPpPUGyU4GrbQmO&embedActivated=True&title=**A New Alert!**&description= "..msg.."&color=00f&footer=True&footerText="..player.Name..""
   
-      local Headers = {["content-type"] = "application/json"}
+      --[[local Headers = {["content-type"] = "application/json"}
   
       local AccountAge = player.AccountAge
       local UserId = player.UserId
@@ -791,7 +791,8 @@ local function sendlog(player, msg)
       local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
       local HttpRequest = http_request or request or HttpPost or syn.request;
   
-      HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
+      HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})]]
+  game:HttpGet(Webhook)
 end
 
 local function sendreport(reported, reason)
