@@ -676,23 +676,34 @@ local nokill = false
 local Game_Folder = game:GetService("Workspace").Terrain["_Game"]
 local Workspace_Folder = Game_Folder.Workspace
 local Admin_Folder = Game_Folder.Admin
+local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}
 local LP = game.Players.LocalPlayer
 local CharLP = game.Players.LocalPlayer.Character
 local RootLP = CharLP.HumanoidRootPart
-local scriptBannedTable = {"Kacperle1337", "Alexcool_4m"}
 padbanned = {}
-banned = {"ghjuiyfhjj", "PR3M13R", "Cafeeeeeeeeeeeeeeerr", "Dom_82838", "JoojoocraaftHp", "susamongusbkaka", "DiamondJingGuy63", "AprilfoolsCrasher", "tere1l", "youvebeencrashedlol", "gemuelimperial", "MainModuleGrabber", "ScripterKAHtx12341", "EzGetGoodKidTras", "Sabota103", "C00lkid646", "HAHAYES0110", "Exprvssed", "JonathanVoyage", "1argeBro", "jimey1388", "The_Aligators", "beni89877", "sealboy9415_ondc", "icaughtyouulackin", "J4ne452", "Pa_blo1000", "Dani_Nar0Ditsky", "Cameroncrowson16", "AKWUFHSNCTWN", "sikeimsocool_lol", "oolinmob", "worriedA009fan", "Prueba00_1", "QWERTYUIOPASDFGHJHD2", "thekillercrum", "LolAmSoHacky0"}
+function mysplit (inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t={}
+  for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+	  str = str:gsub(",", ""):gsub("\"", ""):gsub("{", ""):gsub("}", "")
+      table.insert(t, str)
+    end
+  return t
+end
+banned = mysplit("https://kohlscool.sergioesquina.repl.co/")
 whitelisted = {game.Players.LocalPlayer.name}
 padsCFrame = {}
-table.insert(padsCFrame, CFrame.new(Vector3.new(-24.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-16.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-28.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-12.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-20.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-32.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-36.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-44.765, 5.5, 91.843), Vector3.new(180)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-40.765, 5.5, 91.843), Vector3.new(180)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-16.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-24.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-28.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-12.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-20.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-32.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-36.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-44.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-40.765, 5.5, 91.843), Vector3.new(720)))
 
 local function scriptBanned(plrname)
   if table.find(scriptBannedTable, plrname) then
@@ -723,7 +734,7 @@ local function getDisplayName(plr)
 end
 
 local function sendlog(player, msg)
-      local Webhook = "https://discord.com/api/webhooks/954653823224406097/AyuZpXC4_59I5L_uDyNOQJsodwORK8RqaDzb-QbLW1bu5V3eJH93XQfz4lxpqMlhb8AB"
+      local Webhook = "https://discord.com/api/webhooks/1077324213859389500/1mQQpMxnX97gqlW-he9XDNpVkktOGaHzZD329td3uZdi6ETkvdeSYiPpPUGyU4GrbQmO"
   
       local Headers = {["content-type"] = "application/json"}
   
@@ -792,7 +803,7 @@ local function sendreport(reported, reason)
 		alert("none", "You need to put a player to report")
 		return
 	end
-	local Webhook = "https://discord.com/api/webhooks/936749717046562846/R1sV9wq86Uc8H26t7SkryQ4XKF4MM0cF5ZLYFCbZlvPy47JljKDYHKrGLicbB1-6_jR0"
+	local Webhook = "https://discord.com/api/webhooks/1077324427089412356/LmP6cq2ki2Eq_LEue3W44NQlLozap8RGxkPW4dH5KmF-siNunR8PsSXQhkRQpz-zRZyc"
 	
 	local Headers = {["content-type"] = "application/json"}
 
@@ -1132,7 +1143,24 @@ local function command(player, msg)
 	end
 	for a,b in pairs(whitelisted) do
 		if player.name == b then
+			local LP = game.Players.LocalPlayer
+			local CharLP = game.Players.LocalPlayer.Character
+			local RootLP = CharLP.HumanoidRootPart
 			----------------------------- START OF COMMANDS -----------------------------
+			createcmd(player, msg, prefix, "loadreg", function(playername)
+			  local oldcf = RootLP.CFrame
+				  forEach(Players:GetPlayers(), function(i, playerr) 
+				    if string.sub(playerr.Name:lower(), 1, #playername) == playername:lower() then
+					    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Admin_Folder.Regen.CFrame
+					    wait(0.2)
+					    Chat("tp "..playerr.Name.." me")
+					    wait(0.2)
+				    end
+		    end)
+		    RootLP.CFrame = oldcf
+		    wait(.2)
+		    Chat("tp "..playername.." me")
+	    end)
       createcmd(player, msg, prefix, "bringpads", function()
           if Stable_Check == false then
             local usedCFrames = {}
@@ -1868,14 +1896,13 @@ local function command(player, msg)
     end
   end, true)
   if msg == prefix.."cmds" then
-    wait(.3)
     alert(player, prefix.."moveobby | "..prefix.."kit (kitname) | "..prefix.."portalgun | "..prefix.."pb | "..prefix.."bb | "..prefix.."gohouse | "..prefix.."spam (command) | "..prefix.."stop | "..prefix.."shutdown | "..prefix.."nok | "..prefix.."perm | "..prefix.."noperm | "..prefix.."wlc | "..prefix.."dwlc | "..prefix.."rej | "..prefix.."sm (message)")
-    wait(.3)
+    wait(.1)
     alert(player, ""..prefix.."unpadban (plr) | "..prefix.."findpads | "..prefix.."whitelist (plr) | "..prefix.."unwhitelist (plr) | "..prefix.."fixbp | "..prefix.."cmds | "..prefix.."jail (plr) | "..prefix.."unjail (plr) | "..prefix.."regen | "..prefix.."skydive | "..prefix.."padban (plr) | "..prefix.."btools (plr)")
-    wait(.3)
+    wait(.1)
     alert(player, ""..prefix.."bugchar (plr) | "..prefix.."unskydive | "..prefix.."get | "..prefix.."hop | "..prefix.."ownerchar (plr) | "..prefix.."promo | "..prefix.."tp (plr) | "..prefix.."toggle (option) | "..prefix.."autoadmin (onjoin/toggle) | "..prefix.."admin (plr) | "..prefix.."unadmin (plr) | "..prefix.."ban (plr) | "..prefix.."unban (plr) | "..prefix.."play (num) | "..prefix.."setmusic (id) | "..prefix.."alltools | "..prefix.."gearban (plr) | "..prefix.."ungearban (plr) | "..prefix.."removeregen | "..prefix.."fregen")
-    wait(.3)
-    alert(player, prefix.."upme | "..prefix.."sniper | "..prefix.."setspawn | "..prefix.."lua (lua code) | "..prefix.."animation (animation name) | "..prefix.."bringregen | "..prefix.."ivory | "..prefix.."clearlogs | "..prefix.."movebp | "..prefix.."copyname (name or display name) | "..prefix.."report (playername)/(reason) | "..prefix.."fixcam | "..prefix.."movepads | "..prefix.."animated | "..prefix.."fps | "..prefix.."flygui | "..prefix.."box | "..prefix.."scgui | "..prefix.."hidepad | "..prefix.."bringpads")
+    wait(.1)
+    alert(player, prefix.."upme | "..prefix.."sniper | "..prefix.."setspawn | "..prefix.."lua (lua code) | "..prefix.."animation (animation name) | "..prefix.."bringregen | "..prefix.."ivory | "..prefix.."clearlogs | "..prefix.."movebp | "..prefix.."copyname (name or display name) | "..prefix.."report (playername)/(reason) | "..prefix.."fixcam | "..prefix.."movepads | "..prefix.."animated | "..prefix.."fps | "..prefix.."flygui | "..prefix.."box | "..prefix.."scgui | "..prefix.."hidepad")
   end
   createcmd(player, msg, prefix, "promo", function()
     sannounces()
@@ -2343,10 +2370,6 @@ local function command(player, msg)
   end
   if string.sub(msg:lower(), 1, 5) == prefix.."kit " then
     local kit = string.sub(msg:lower(), 6, msg:len())
-    local kitlist = {
-      "war",
-      "swords"
-    }
     local kitgears = {
       ["war"] = {
         11999247,
@@ -2361,17 +2384,36 @@ local function command(player, msg)
       }
     }
     if kit == "list" then
-      for _,kitname in pairs(kitlist) do
+      for kitname,gears in next, kitgears do
         sendchat(kitname)
       end
     end
-    for _,kitname in pairs(kitlist) do
-      if kit == kitname and type(gear) ~= "table" then
-        for key,gearid in pairs(kitgears[kitname]) do
-          gear(player.name, toInteger(gearid))
-        end
+    if string.sub(msg:lower(), 1, 5) == prefix.."kit " then
+    local kit = string.sub(msg:lower(), 6, msg:len())
+    local kitgears = {
+      ["war"] = {
+        11999247,
+        130113146,
+        30393548,
+        10884288,
+        28277486,
+        47597835
+      },
+      ["swords"] = {
+        108158379
+      }
+    }
+    if kit == "list" then
+      for kitname,gears in next, kitgears do
+        sendchat(kitname)
       end
     end
+    for kitname, gears in next, kitgears do
+      if kit == kitname then
+        gear(player.name, toInteger(gears))
+      end
+    end
+  end
   end
   if msg == prefix.."gohouse" then
     if player.name == Players.LocalPlayer.name then

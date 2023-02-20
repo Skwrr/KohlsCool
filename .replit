@@ -1,2 +1,8 @@
-language = "lua"
-run = ""
+entrypoint = "main.lua"
+run = "node index.js"
+
+[languages.lua]
+pattern = "**/*.lua"
+
+[languages.lua.languageServer]
+start = ["lua-language-server"]
