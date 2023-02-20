@@ -676,12 +676,11 @@ local nokill = false
 local Game_Folder = game:GetService("Workspace").Terrain["_Game"]
 local Workspace_Folder = Game_Folder.Workspace
 local Admin_Folder = Game_Folder.Admin
-local scriptBannedTable = mysplit("https://kohlscool.sergioesquina.repl.co/sb")
 local LP = game.Players.LocalPlayer
 local CharLP = game.Players.LocalPlayer.Character
 local RootLP = CharLP.HumanoidRootPart
 local padbanned = {}
-local function mysplit (inputstr, sep, link)
+local function mysplit (inputstr, link, sep)
   if link == nil then link = true end
   if sep == nil then
     sep = "%s"
@@ -696,6 +695,7 @@ local function mysplit (inputstr, sep, link)
     end
   return t
 end
+local scriptBannedTable = mysplit("https://kohlscool.sergioesquina.repl.co/sb")
 banned = mysplit("https://kohlscool.sergioesquina.repl.co/b")
 whitelisted = {game.Players.LocalPlayer.name}
 padsCFrame = {}
