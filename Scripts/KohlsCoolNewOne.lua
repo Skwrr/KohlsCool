@@ -699,15 +699,15 @@ local scriptBannedTable = mysplit("https://kohlscool.sergioesquina.repl.co/sb")
 banned = mysplit("https://kohlscool.sergioesquina.repl.co/b")
 whitelisted = {game.Players.LocalPlayer.name}
 padsCFrame = {}
-table.insert(padsCFrame, CFrame.new(Vector3.new(-16.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-24.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-28.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-12.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-20.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-32.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-36.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-44.765, 5.5, 91.843), Vector3.new(720)))
-table.insert(padsCFrame, CFrame.new(Vector3.new(-40.765, 5.5, 91.843), Vector3.new(720)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-16.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-24.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-28.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-12.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-20.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-32.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-36.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-44.765, 4.5, 91.843), Vector3.new(720*4)))
+table.insert(padsCFrame, CFrame.new(Vector3.new(-40.765, 4.5, 91.843), Vector3.new(720*4)))
 
 local function scriptBanned(plrname)
   if table.find(scriptBannedTable, plrname) then
@@ -892,12 +892,12 @@ local function alert(plr, txt)
         sendchat(txt)
       end
     elseif type(plr) == "string" and plr:lower() == "none" then
-    game.StarterGui:SetCore("ChatMakeSystemMessage", {
+    --[[game.StarterGui:SetCore("ChatMakeSystemMessage", {
           Text = "KohlsCool: "..txt;
           Font = Enum.Font.SourceSansLight;
           Color = Color3.new(255, 255, 255);
           FontSize = Enum.FontSize.Size8;
-        })
+        })]]
     game.StarterGui:SetCore("SendNotification", {
           Title = "KohlsCool";
           Text = txt;
@@ -910,6 +910,12 @@ alert("none", "Starting up, please wait...")
 
 
 if scriptBanned(LP.Name) then
+  game.StarterGui:SetCore("ChatMakeSystemMessage", {
+          Text = "KohlsCool: ".." You are scriptbanned, you are not able to run any command, join our Discord server to try to get unbanned: https://discord.gg/jVkjX8Q6X6";
+          Font = Enum.Font.SourceSansLight;
+          Color = Color3.new(255, 255, 255);
+          FontSize = Enum.FontSize.Size8;
+        })
   alert("none", "You are scriptbanned, you are not able to run any command, join our Discord server to try to get unbanned: https://discord.gg/jVkjX8Q6X6")
   PadCheck = false
   game.Players:Chat(";toggle antivoid")
@@ -921,7 +927,11 @@ if scriptBanned(LP.Name) then
   game.Players:Chat(";toggle antiblind")
   game.Players:Chat(";toggle antim")
   wait(2)
-  table.remove(whitelisted, LP.Name)
+  for i, v in pairs(whitelisted) do 
+    if v == LP.Name then 
+      table.remove(whitelisted, i)
+    end
+  end
 else
   alert("none", "Fully loaded, type ';cmds' to see a list of commands")
   gui()
@@ -2198,9 +2208,24 @@ local function command(player, msg)
     local plr = nil
 
     if name == "others" then
-      for i,v in pairs(game.Players:GetChildren()) do
-        if v.name ~= game.Players.LocalPlayer.name then
-        game.Workspace.Delete.delete:FireServer(v)
+      for i,p in pairs(game.Players:GetChildren()) do
+        if p.name ~= game.Players.LocalPlayer.name then
+        gear(LP, 25162389)
+              wait()
+              for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+      if v:IsA("Tool") and v.Name == "BlueBucket" then
+        v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
+        for i,w in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
+          if w:IsA("Tool") and v.Name == "BlueBucket" then 
+                      Chat("size nan "..p.Name)
+                      Chat("freeze "..p.Name)
+                      
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
+          end
+        end
+        v.Parent = game.Workspace
+      end
+              end
         end
       end
     else
@@ -2212,7 +2237,20 @@ local function command(player, msg)
         if name == sub then
         plr = v
           if plr.name ~= game.Players.LocalPlayer.name then
-            game.Workspace.Delete.delete:FireServer(plr)
+            gear(LP, 25162389)
+               for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+      if v:IsA("Tool") and v.Name == "BlueBucket" then
+        v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
+        for i,w in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
+          if w:IsA("Tool") and v.Name == "BlueBucket" then
+            Chat("size nan "..plr.Name)
+                        Chat("freeze "..plr.Name)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
+          end
+        end
+        v.Parent = game.Workspace
+      end
+                end
           end
         end
       end
@@ -2707,11 +2745,6 @@ end
 end)
                             
 game:GetService("Players").PlayerAdded:Connect(function(player)
-    if hasGamePass(player.UserId, 66254) and player.Name ~= LP.name then
-      if autoadmin ~= true then autoadmin = true end
-      table.insert(admins, player.Name)
-      alert(player, player.Name.." has been added because he has bought perm admin")
-    end
     if wlc == true then
       game:GetService'Players':Chat((prefix.."sm lol "..player.name.." just joined"))
     end
@@ -2727,7 +2760,7 @@ game:GetService("Players").PlayerAdded:Connect(function(player)
       if band == false then
         Chat(prefix.."admin "..player.name)
       else
-        Chat("pm "..player.name.." You are banned")
+        Chat("pm "..player.name.." You are perm banned")
       end
     end
     player.Chatted:Connect(function(msg)
@@ -2739,11 +2772,11 @@ game:GetService("Players").PlayerAdded:Connect(function(player)
 end)
 
 for _, plr in pairs(game.Players:GetPlayers()) do
-  if hasGamePass(plr.UserId, 66254) and plr.Name ~= LP.name then
+  --[[if hasGamePass(plr.UserId, 66254) and plr.Name ~= LP.name then
     autoadmin = true
     table.insert(admins, plr.Name)
     alert(plr, plr.Name.." has been added because he has bought perm admin")
-  end
+  end]]
   plr.Chatted:Connect(function(msg)
       if logchat == true and plr.name ~= LP.name then
         sendchat("["..plr.name.."]: "..msg)
