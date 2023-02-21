@@ -1680,6 +1680,61 @@ local function command(player, msg)
 			end)
 		end
   end)
+      createcmd(player, msg, prefix, "kick", function(tk)
+alert(player, "Kicking User")
+    local name = tk:lower() 
+    local plr = nil
+
+    if name == "others" then
+      for i,p in pairs(game.Players:GetChildren()) do
+        if p.name ~= game.Players.LocalPlayer.name then
+        gear(LP, 25162389)
+              wait()
+              for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+      if v:IsA("Tool") and v.Name == "BlueBucket" then
+        v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
+        for i,w in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
+          if w:IsA("Tool") and v.Name == "BlueBucket" then 
+                      Chat("size nan "..p.Name)
+                      Chat("freeze "..p.Name)
+                      
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
+          end
+        end
+        v.Parent = game.Workspace
+      end
+              end
+        end
+      end
+    else
+      local plrs = game.Players:GetChildren()
+      for i,v in pairs(plrs) do
+        local strlower = string.lower(v.name)
+        local sub = string.sub(strlower,1,#name)
+
+        if name == sub then
+        plr = v
+          if plr.name ~= game.Players.LocalPlayer.name then
+            gear(LP, 25162389)
+               for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+      if v:IsA("Tool") and v.Name == "BlueBucket" then
+        v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
+        for i,w in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
+          if w:IsA("Tool") and v.Name == "BlueBucket" then
+            Chat("size nan "..plr.Name)
+                        Chat("freeze "..plr.Name)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
+          end
+        end
+        v.Parent = game.Workspace
+      end
+                end
+          end
+        end
+      end
+          end
+
+        end)
   createcmd(player, msg, prefix, "ungearban", function(name)
     local acd = false
     if anticrash == true then
