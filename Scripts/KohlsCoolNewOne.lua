@@ -1689,16 +1689,20 @@ alert(player, "Kicking User")
       for i,p in pairs(game.Players:GetChildren()) do
         if p.name ~= game.Players.LocalPlayer.name then
         gear(LP.name, 25162389)
-              wait()
+              wait(.07)
               for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
       if v:IsA("Tool") and v.Name == "BlueBucket" then
         v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
         for i,w in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
           if w:IsA("Tool") and v.Name == "BlueBucket" then 
-                      Chat("size nan "..p.Name)
+                      Chat("size "..p.name.." nan")
+wait(.05)
+
                       Chat("freeze "..p.Name)
+                        wait(.05)
                       
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
+                        wait(.05)
           end
         end
         v.Parent = game.Workspace
@@ -1717,14 +1721,18 @@ alert(player, "Kicking User")
         plr = v
           if plr.name ~= game.Players.LocalPlayer.name then
             gear(LP.name, 25162389)
+                  wait(.07)
                for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
       if v:IsA("Tool") and v.Name == "BlueBucket" then
         v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
         for i,w in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
           if w:IsA("Tool") and v.Name == "BlueBucket" then
-            Chat("size nan "..plr.Name)
+            Chat("size "..p.name.." nan")
+                          wait(.05)
                         Chat("freeze "..plr.Name)
+                          wait(.05)
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
+                          wait(.05)
           end
         end
         v.Parent = game.Workspace
