@@ -1718,7 +1718,7 @@ wait(.05)
                         wait(.7)
           end
         end
-        v.Parent = game.Workspace
+        game.Workspace[LP.name]:FindFirstChild(v.Name).Parent = game.Workspace
                     wait(.2)
       end
               end
@@ -1745,10 +1745,13 @@ wait(.05)
                         Chat("freeze "..plr.Name)
                           wait(.05)
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
-                          wait(.5)
+                          wait(1)
           end
         end
-        v.Parent = game.Workspace
+        game.Workspace[LP.Name][v.Name].Parent = game.Workspace
+                      for i=0, 200 do 
+                        gear(plr.Name, 25162389)
+                      end
       end
                 end
           end
