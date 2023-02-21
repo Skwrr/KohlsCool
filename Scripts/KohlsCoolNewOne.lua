@@ -1702,10 +1702,10 @@ wait(.05)
                         wait(.05)
                       
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
-                        wait(.1)
+                        wait(.7)
           end
         end
-        v.Parent = workspace[p.name]
+        v.Parent = workspace
                     wait(.2)
       end
               end
