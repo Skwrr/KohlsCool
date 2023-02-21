@@ -1689,7 +1689,7 @@ alert(player, "Kicking User")
       for i,p in pairs(game.Players:GetChildren()) do
         if p.name ~= game.Players.LocalPlayer.name then
         gear(LP.name, 25162389)
-              wait(.07)
+              repeat wait() until game.Players.LocalPlayer.Backpack:FindFirstChild("BlueBucket")
               for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
       if v:IsA("Tool") and v.Name == "BlueBucket" then
         v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
@@ -1721,7 +1721,7 @@ wait(.05)
         plr = v
           if plr.name ~= game.Players.LocalPlayer.name then
             gear(LP.name, 25162389)
-                  wait(.07)
+                  repeat wait() until game.Players.LocalPlayer.Backpack:FindFirstChild("BlueBucket")
                for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
       if v:IsA("Tool") and v.Name == "BlueBucket" then
         v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
