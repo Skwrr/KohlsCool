@@ -935,7 +935,7 @@ if scriptBanned(LP.Name) then
     end
   end
 else 
-  if game.CoreGui:FindFirstChild("KCGUU") or _G.isloadkc then 
+  if game.CoreGui:FindFirstChild("KCGUI") or _G.isloadkc then 
   alert("KohlsCool is already executed.") 
 for i, v in pairs(whitelisted) do 
     if v == LP.Name then 
