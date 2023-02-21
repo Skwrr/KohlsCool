@@ -4,6 +4,7 @@ warn("Starting KohlsCool v"..version)
 local RunService = game:GetService("RunService")
 
 local prefix = ";" -- ONLY ONE CHARACTER
+
 local function gui()
     local ScreenGui = Instance.new("ScreenGui")
     local main = Instance.new("Frame")
@@ -107,6 +108,7 @@ local function gui()
     antischeck()
   
     ScreenGui.Parent = game.CoreGui
+    ScreenGui.Name = "KCGUI"
   
     main.Name = "main"
     main.Parent = ScreenGui
@@ -907,6 +909,12 @@ local function alert(plr, txt)
 end
 
 alert("none", "Starting up, please wait...")
+
+if game.CoreGui:FindFirstChild("KCGUU") then 
+  alert("KohlsCool is already executed. Prefix is: "..prefix)
+return
+
+end
 
 
 if scriptBanned(LP.Name) then
