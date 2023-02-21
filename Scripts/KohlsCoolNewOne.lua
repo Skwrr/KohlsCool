@@ -1,4 +1,4 @@
-local version = "4.5"
+local version = "4.6"
 warn("Starting KohlsCool v"..version)
 
 local RunService = game:GetService("RunService")
@@ -1702,7 +1702,7 @@ wait(.05)
                         wait(.05)
                       
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
-                        wait(.5)
+                        wait(.7)
           end
         end
         v.Parent = game.Workspace
