@@ -1734,7 +1734,9 @@ wait(.05)
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
                           wait(.5)
           end
-        end
+        end 
+                      local i = 0
+                      repeat gear(plr.name, 25162389) gear(plr.name, 25741198) i=i+1 wait() until i = 200
         v.Parent = game.Workspace
       end
                 end
