@@ -1702,7 +1702,7 @@ wait(.05)
                         wait(.05)
                       
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
-                        wait(.05)
+                        wait(.2)
           end
         end
         v.Parent = game.Workspace
@@ -1732,7 +1732,7 @@ wait(.05)
                         Chat("freeze "..plr.Name)
                           wait(.05)
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
-                          wait(.05)
+                          wait(.2)
           end
         end
         v.Parent = game.Workspace
