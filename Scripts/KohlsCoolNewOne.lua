@@ -1727,7 +1727,7 @@ wait(.05)
         v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
         for i,w in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
           if w:IsA("Tool") and v.Name == "BlueBucket" then
-            Chat("size "..p.name.." nan")
+            Chat("size "..plr.name.." nan")
                           wait(.05)
                         Chat("freeze "..plr.Name)
                           wait(.05)
