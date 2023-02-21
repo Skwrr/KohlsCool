@@ -1705,7 +1705,7 @@ wait(.05)
                         wait(.7)
           end
         end
-        v.Parent = workspace
+        v.Parent = game.Workspace
                     wait(.2)
       end
               end
