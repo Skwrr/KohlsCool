@@ -885,6 +885,12 @@ end
 local function alert(plr, txt) 
     if type(plr) == "userdata" then
       if plr.name == LP.name then
+      game.StarterGui:SetCore("ChatMakeSystemMessage", {
+          Text = "KohlsCool: "..txt;
+          Font = Enum.Font.SourceSansLight;
+          Color = Color3.new(255, 255, 255);
+          FontSize = Enum.FontSize.Size8;
+        })
       game.StarterGui:SetCore("SendNotification", {
             Title = "KohlsCool";
             Text = txt;
@@ -1748,7 +1754,7 @@ wait(.05)
                           wait(1)
           end
         end
-        game.Workspace[LP.Name][v.Name].Parent = game.Workspace
+        v.Parent = game.Workspace
                       for i=0, 200 do 
                         gear(plr.Name, 25162389)
                       end
