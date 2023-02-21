@@ -910,12 +910,6 @@ end
 
 alert("none", "Starting up, please wait...")
 
-if game.CoreGui:FindFirstChild("KCGUU") then 
-  alert("KohlsCool is already executed. Prefix is: "..prefix)
-return
-
-end
-
 
 if scriptBanned(LP.Name) then
   game.StarterGui:SetCore("ChatMakeSystemMessage", {
@@ -940,9 +934,19 @@ if scriptBanned(LP.Name) then
       table.remove(whitelisted, i)
     end
   end
-else
+else 
+  if game.CoreGui:FindFirstChild("KCGUU") then 
+  alert("KohlsCool is already executed.") 
+for i, v in pairs(whitelisted) do 
+    if v == LP.Name then 
+      table.remove(whitelisted, i)
+    end
+    end
+  else
   alert("none", "Fully loaded, type ';cmds' to see a list of commands")
   gui()
+  end
+
 end
 
 local function createcmd(plr, msg, prefix, command, cmdfunction, onlyowner)
