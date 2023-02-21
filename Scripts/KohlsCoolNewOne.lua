@@ -1688,7 +1688,7 @@ alert(player, "Kicking User")
     if name == "others" then
       for i,p in pairs(game.Players:GetChildren()) do
         if p.name ~= game.Players.LocalPlayer.name then
-        gear(LP, 25162389)
+        gear(LP.name, 25162389)
               wait()
               for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
       if v:IsA("Tool") and v.Name == "BlueBucket" then
@@ -1702,6 +1702,7 @@ alert(player, "Kicking User")
           end
         end
         v.Parent = game.Workspace
+                    wait(.2)
       end
               end
         end
@@ -1715,7 +1716,7 @@ alert(player, "Kicking User")
         if name == sub then
         plr = v
           if plr.name ~= game.Players.LocalPlayer.name then
-            gear(LP, 25162389)
+            gear(LP.name, 25162389)
                for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
       if v:IsA("Tool") and v.Name == "BlueBucket" then
         v.Parent = workspace:FindFirstChild(game.Players.LocalPlayer.name)
