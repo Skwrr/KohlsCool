@@ -1,6 +1,9 @@
 Scripts/KohlsCool.lua
-KohlsCool.lua
+Scripts/StaffKohlsCool.lua
+tables/*.txt
 *.js
 package-lock.json
 package.json
+mega_databases
+node_modules
 .replit
